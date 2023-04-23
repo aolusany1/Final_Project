@@ -62,7 +62,7 @@ function markerPlace(array, map) {
     console.log("markerPlace", item);
     const {coordinates} = item.location;
 
-    //L.marker([coordinates[1], coordinates[0]]).addTo(map); problem here
+    //L.marker([coordinates[1], coordinates[0]]).addTo(map); problem here to be fixed
   });
 }
 
