@@ -3,20 +3,57 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Speed Limits Map</title>
+    <title>Final Project</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
     <link rel="stylesheet" href="style.css" />
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
   </head>
   <body>
-    <div class="container">
-      <h1>Speed Limits Map</h1>
-      <label for="search">Search:</label>
-      <input type="text" id="search" placeholder="Search by location" />
-      <label for="filter">Filter by speed limit:</label>
-      <select id="filter">
-      </select>
-      <button id="loadData">Load</button>
-      <div id="map"></div>
-      <div class="results"></div>
+    <div class="wrapper">
+      <header class="header">
+        <h1>Farm Locations</h1>
+      </header>
+      <div class="container">
+        <div class="left_section box">
+          <h3>Farms</h3>
+          <form
+            action="https://data.princegeorgescountymd.gov/resource/mnx8-c8pz.json"
+            class="box main_form"
+          >
+            <button type="button" id="data_load">Load Farms</button>
+            <button type="button" id="data_clear">Clear</button>
+            <label for="resto">Filter By Farm names</label>
+            <input type="text" id="resto" name="resto" />
+            <button type="button" id="generate">Generate List</button>
+          </form>
+        </div>
+        <div class="right_section box">
+          <h3>Locations</h3>
+          <div id="map" class="box"> </div>
+          <ol class="box" id="farm_list">
+            A list of farms and their locations.
+          </ol>
+          <div class="lds-ellipsis" id="data_load_animation">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
     </div>
+    <footer class="footer">
+      YOUR GITHUB ACCOUNT NAME
+      <a
+        href="http://github.com/aolusany1/INST377-Lab-Work"
+        target="_blank"
+        rel="noopener noreferrer"
+        >aolusany1</a
+      >
+    </footer>
+    <script src="./script.js"></script>
   </body>
 </html>
