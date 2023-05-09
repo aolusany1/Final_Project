@@ -39,7 +39,6 @@ function cutfarmList(list) {
   }));
 }
 function initMap() {
-  // 38.9072° N, 77.0369° W
   const carto = L.map("map").setView([38.9, -76.93], 13);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
@@ -60,15 +59,14 @@ function markerPlace(array, map) {
 
   array.forEach((item) => {
     console.log("markerPlace", item);
-    const {coordinates} = item.location;
+    const {longitude, latitude} = item.location;
 
-    //L.marker([coordinates[1], coordinates[0]]).addTo(map); problem here to be fixed
+    L.marker([latitude, longitude]).addTo(map);
   });
 }
 
 async function mainEvent() {
-  // the async keyword means we can make API requests
-  const mainForm = document.querySelector(".main_form"); // This class name needs to be set on your form before you can listen for an event on it
+  const mainForm = document.querySelector(".main_form"); 
   const loadDataButton = document.querySelector("#data_load");
   const clearDataButton = document.querySelector("#data_clear");
   const generateListButton = document.querySelector("#generate");
@@ -130,7 +128,7 @@ async function mainEvent() {
   clearDataButton.addEventListener("click", (event) => {
     console.log("clear browser data");
     localStorage.clear();
-    console.log("localStorage Check", localStorage.getItem("storedData"));
+    console.log("localStorage Check", localStorage.getItem("parsedData"));
   });
 }
 
