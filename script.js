@@ -9,30 +9,23 @@ function injectHTML(list) {
   const target = document.querySelector("#farm_list");
   target.innerHTML = "";
   list.forEach((item) => {
-    const str = `<li>${item.name}</li>`;
+    const str = `<li>${item.market_name}</li>`;
     target.innerHTML += str;
   });
 }
 
-/* A quick filter that will return something based on a matching input */
 function filterList(list, query) {
   return list.filter((item) => {
-    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseName = item.market_name.toLowerCase();
     const lowerCaseQuery = query.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
-  /*
-        Using the .filter array method, 
-        return a list that is filtered by comparing the item name in lower case
-        to the query in lower case
-    
-        Ask the TAs if you need help with this
-      */
 }
 
 function cutfarmList(list) {
+  console.log("cut farm list:", list);
   console.log("fired cut list");
-  const range = [...Array(15).keys()];
+  const range = [...Array(10).keys()];
   return (newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length - 1);
     return list[index];
@@ -84,19 +77,15 @@ async function mainEvent() {
     generateListButton.classList.remove("hidden");
   }
 
-  let currentList = []; // this is "scoped" to the main event function
-
-  /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
+  let currentList = []; 
   loadDataButton.addEventListener("click", async (submitEvent) => {
-    // async has to be declared on every function that needs to "await" something
     console.log("Loading data");
     loadAnimation.style.display = "inline-block";
 
     const results = await fetch(
-      "https://data.princegeorgescountymd.gov/resource/mnx8-c8pz.json"
+      "https://data.princegeorgescountymd.gov/resource/sphi-rwax.json"
     );
 
-    // This changes the response from the GET into data we can use - an "object"
     const storedList = await results.json();
     localStorage.setItem("storedData", JSON.stringify(storedList));
     parsedData = storedList;
@@ -106,7 +95,6 @@ async function mainEvent() {
     }
 
     loadAnimation.style.display = "none";
-    // console.table(storedList);
   });
 
   generateListButton.addEventListener("click", (event) => {
@@ -119,17 +107,19 @@ async function mainEvent() {
 
   textField.addEventListener("input", (event) => {
     console.log("input", event.target.value);
-    const newList = filterList(currentList, event.target.value);
-    console.log(newList);
-    injectHTML(newList);
-    markerPlace(newList, carto);
+    if (currentList.length > 0) {
+      const newList = filterList(currentList, event.target.value);
+      console.log(newList);
+      injectHTML(newList);
+      markerPlace(newList, carto);
+    }
   });
 
   clearDataButton.addEventListener("click", (event) => {
     console.log("clear browser data");
     localStorage.clear();
-    console.log("localStorage Check", localStorage.getItem("parsedData"));
+    console.log("localStorage Check", localStorage.getItem("storedData"));
   });
 }
 
-document.addEventListener("DOMContentLoaded", async () => mainEvent()); // the async keyword means we can make API requests
+document.addEventListener("DOMContentLoaded", async () => mainEvent());

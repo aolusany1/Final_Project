@@ -2,13 +2,9 @@
   box-sizing: border-box;
 }
 
-/* 
-  These rules apply to actual HTML elements with no labelling!
-  So: they style the tags directly
-*/
 
 html {
-  background-color: #333b5c;
+  background-color: #23b636;
   font-size: 16px;
   min-width: 300px;
   overflow-x: hidden;
@@ -31,7 +27,7 @@ body {
     ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background-color: rgb(34, 25, 121);
+  background-color: rgb(19, 201, 192);
 }
 
 a {
@@ -47,15 +43,8 @@ h3 {
 }
 
 form {
-  accent-color: hsla(348, 80%, 52%, 0.482);
+  accent-color: hsla(261, 86%, 32%, 0.482);
 }
-
-/*
-  - These styles use 'class names'
-  - You can apply them by using the 'class' attribute on your HTML
-  - like this: <div class="wrapper">
-  - note that the period vanishes there!
-*/
 
 .wrapper {
   min-height: 100vh;
@@ -80,39 +69,26 @@ form {
   padding-bottom: 1.5rem;
 }
 
-/*
-  This rule implies that the H1 tag lives within another HTML tag
-  It "inherits" some rules from the above
-  Those rules won't apply to an h1 that's outside a block with the class of 'header'
-*/
+
 
 .header h1 {
   display: block;
-  /* this will push other blocks out of the way */
 
   /* colors */
-  background-color: #0036ca;
-  color: #0ff31a;
+  background-color: #2553d3;
+  color: #000000;
 
   /* shapes */
   border-radius: 6px;
   font-size: 1.5rem;
   padding: 1.25rem;
-  margin: 0; /* removing the margin on h1 tags means the header pins to the top if we move */
+  margin: 0; 
 
-  /* box-shadows are fancy */
   box-shadow: 0 0.5em 1em -0.125em rgba(129, 46, 46, 0.63),
     0 0 0 1px rgb(10 10 10 / 2%);
 }
 
-/*
-  Rules can be combined on a block to apply the 'cascade' in order
-  So you can use two classnames in a single class attribute
-  like: <div class="box section">
 
-  Rules may combine in unexpected ways - remember that the LAST thing written in this file will have "priority"
-  And will be what displays in your client
-*/
 #map {
   width: 400px;
   height: 360px;
@@ -131,14 +107,14 @@ form {
 }
 
 .left_section {
-  background-color: rgba(219, 81, 116, 0.932);
+  background-color: rgba(202, 16, 16, 0.932);
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
 }
 
 .right_section {
-  background-color: rgba(208, 230, 7, 0.897);
+  background-color: rgba(42, 15, 199, 0.897);
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
@@ -148,16 +124,12 @@ form {
   flex-flow: column;
 }
 
-/*
-  This block is actually dependent on the "container" block having a flex set on it
-  and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
-  That serves to cram the footer to the bottom of the page.
-*/
+
 
 .footer {
   flex-shrink: 0;
   padding: 1rem;
-  background-color: rgba(0, 139, 139, 0.8);
+  background-color: rgba(29, 197, 71, 0.8);
   font-size: 1.2rem;
   font-weight: 600;
   position: fixed;
@@ -169,15 +141,12 @@ form {
 }
 
 .footer a {
-  color: rgb(19, 208, 233);
+  color: rgb(35, 58, 94);
   text-decoration: underline;
 }
 
-/*
-  This is an example of a 'pseudoclass'
-  In this instance, it says what to do if a mouse hovers over a link
-  This is pretty desktop-specific, since there's no hover function on touchscreens
-*/
+
+
 .footer a:hover {
   /* Hue, saturation, luminosity, alpha */
   background-color: hsla(309, 88%, 16%, 0.15);
@@ -192,7 +161,6 @@ form {
   margin-bottom: 5px;
 }
 
-/* Deploy this with images as direct "children" and the images should pop into shape */
 .grid {
   display: flex;
   justify-content: space-evenly;
@@ -207,7 +175,6 @@ form {
   height: 150px;
 }
 
-/* Carousel */
 div.carousel {
   max-width: 300px;
   overflow: hidden;
@@ -228,7 +195,6 @@ div.carousel {
   -webkit-overflow-scrolling: touch;
 }
 
-/* .carousel_item, */
 .hidden {
   display: none;
 }
@@ -238,17 +204,6 @@ div.carousel {
 }
 
 .carousel_item img {
-  /* 
-    Setting width, rather than max-width or min-width,
-    means annoying pop-ins won't happen
-    but it also means you need to format your images to be compatible
-    or they will stretch weird
-
-    - try a tall one and see what happens
-    - change the height on a fixed image size and see what happens
-    - now make sure that images are _always_ square
-    - ... there's a reason crop tools are popular in image editors
-   */
   width: 150px;
 }
 
@@ -261,33 +216,27 @@ div.carousel {
   font-weight: bold;
   height: 45px;
   padding: 10px;
-  line-height: 0; /* This centers a button's text! */
-  border: 2px solid rgba(26, 52, 138, 0.89); /* shorthand for how to do a border */
+  line-height: 0; 
+  border: 2px solid rgba(26, 52, 138, 0.89);
 }
 
 .prev:focus,
 .next:focus {
   margin: 0;
-  /* Pick a good border colour and check out how it works with your buttons */
 }
 
 .prev:hover,
 .next:hover {
-  /* Pick a good background colour for your hover pseudoclass */
 }
 
-/*
-Form Styles
-*/
+
 
 form input {
-  /* This is a hack to make sure our boxes line up with one another nicely */
   width: 100%;
-  width: -moz-available; /* WebKit-based browsers will ignore this. */
-  width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+  width: -moz-available; 
+  width: -webkit-fill-available;
   width: fill-available;
 
-  /* here we are setting white space correctly */
   margin-bottom: 1rem;
   height: 2rem;
   border-radius: 4px;
@@ -295,20 +244,18 @@ form input {
 
 form label {
   width: 100%;
-  width: -moz-available; /* WebKit-based browsers will ignore this. */
-  width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+  width: -moz-available; 
+  width: -webkit-fill-available;
   width: fill-available;
   align-items: flex-start;
 
-  display: block; /* this turns the label text into a box we can set margins on */
+  display: block;
   margin-bottom: 0.5rem;
 }
 
-/* How To Write A Media Query For Small Screens */
+
 
 @media only screen and (max-width: 736px) {
-  /* Rules in here will only apply when a screen is the correct size */
-  /* check it out by using your developer tools to shrink your screen-size */
   .container {
     background-color: rgba(26, 1, 20, 0.801);
     flex-direction: column;
@@ -317,10 +264,6 @@ form label {
   }
 }
 
-/* 
-    New code bonus: pure CSS data loading icon
-    This comes from loading.io/css - it's nice to show that something is happening!
-*/
 
 .lds-ellipsis {
   display: inline-block;
